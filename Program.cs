@@ -12,7 +12,8 @@ namespace MyApp
             string wordSelected;
             string[] words = ["Undertale", "Runescape", "Trojan", "TheCriticallyAcclaimedMMORPGFFXIV", 
                 "Celeste", "Minecraft", "Herobrine", "PirateSoftware", "RNGesus", "Fuck", "UnusAnnus", 
-                "MementoMori", "Jerma", "Markiplier", "Fishing"];
+                "MementoMori", "Jerma", "Markiplier", "Fishing", "Hangman", "Jazz", "Blender", "Python",
+                "Balatro", "Ubuntu"];
 
 
 
@@ -21,12 +22,12 @@ namespace MyApp
                 // Difficulty selection
                 Console.WriteLine("Ladies and gentlemen, welcome... TO THE HANGMAN! \n(Gaming Edition (Ultra Deluxe (Nobody QA'd the list of words, good luck!)))");
                 Console.Write("How many lives do you wanna have? (number): ");
-                while (!(int.TryParse(Console.ReadLine(), out lives) && lives >= 0)) { Console.Write("\nInvalid input. Try again:"); }
-                if (lives == 0)
+                while (!(int.TryParse(Console.ReadLine(), out lives) && lives > 0)) { Console.Write("\nInvalid input. Try again:"); }
+                if (lives == 1)
                 {
                     Console.WriteLine("What a chad we got here!");
                 }
-                else if (1 <= lives && lives <= 5)
+                else if (2 <= lives && lives <= 5)
                 {
                     Console.WriteLine("Let's see what you're worth!");
                 }
@@ -38,7 +39,7 @@ namespace MyApp
                 {
                     Console.WriteLine("Taking it easy this time around, huh?");
                 }
-                Thread.Sleep(2000);
+                Thread.Sleep(1500);
                 Console.Clear();
                 Console.WriteLine("Let's start!");
 
@@ -73,7 +74,7 @@ namespace MyApp
 
 
                     Console.Write("Please choose a character: ");
-                    while ((!char.TryParse(Console.ReadLine().ToUpper(), out charLast) || !charsRemaining.Contains(charLast))) { Console.Write("Invalid input. Try again:"); };
+                    while (!char.TryParse(Console.ReadLine().ToUpper(), out charLast) || !charsRemaining.Contains(charLast)) { Console.Write("Invalid input. Try again:"); };
                     charsRemaining.Remove(charLast);
                     charCorrect = false;
                     for (int i = 0; i < wordFull.Length; i++)
@@ -126,11 +127,11 @@ namespace MyApp
                 {
                     switch (Console.ReadLine())
                     {
-                        case ("yes"):
+                        case "yes":
                             gameExiting = false;
                             Console.Clear();
                             break;
-                        case ("no"):
+                        case "no":
                             gameExiting = false;
                             game = false;
                             Console.WriteLine("K, byyyyye...");
