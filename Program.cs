@@ -74,7 +74,7 @@ namespace MyApp
 
 
                     Console.Write("Please choose a character: ");
-                    while (!char.TryParse(Console.ReadLine().ToUpper(), out charLast) || !charsRemaining.Contains(charLast)) { Console.Write("Invalid input. Try again:"); };
+                    while (!char.TryParse((Console.ReadLine() ?? "").ToUpper(), out charLast) || !charsRemaining.Contains(charLast)) { Console.Write("Invalid input. Try again: "); };
                     charsRemaining.Remove(charLast);
                     charCorrect = false;
                     for (int i = 0; i < wordFull.Length; i++)
